@@ -1,6 +1,6 @@
 all:
-	nasm -f bin ./boot.asm -o ./boot.bin
-	dd if=./message.txt >> ./boot.bin
+	nasm -f bin ./src/boot/boot.asm -o ./bin/boot.bin
+#	dd if=./message.txt >> ./boot.bin
 	dd if=/dev/zero bs=512 count=1 >> ./boot.bin
 
 qemu:
@@ -11,4 +11,4 @@ debug: all
 	gdb -ex "target remote localhost:1234"
 
 clean:
-	rm ./boot.bin
+	rm ./bin/boot.bin
